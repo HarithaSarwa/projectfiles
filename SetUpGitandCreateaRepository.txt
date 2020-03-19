@@ -1,0 +1,88 @@
+
+Section 1.5:
+
+Set Up Git and Create a Repository
+DESCRIPTION
+
+This section will guide you to:
+
+Create your GitHub account
+Connect from local Git repository to remote GitHub via SSH
+Initiate the first push
+This guide has four subsections, namely:
+
+1.a. Setting up your GitHub account
+		www.github.com
+
+1.b. Creating SSH-key and adding it to GitHub (https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+Step1: .ssh-keygen -t rsa -b 4096 -C “<haritha.sarwa@outlook.com>” 
+Step2: This creates a new ssh key, using the provided email as a label.
+		> Generating public/private rsa key pair.
+Step3: When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+		> Enter a file in which to save the key (/c/Users/you/.ssh/id_rsa):[Press enter]
+Step4: At the prompt, type a secure passphrase. 
+		> Enter passphrase (empty for no passphrase): [1234]
+		> Enter same passphrase again: [1234]
+Step5: To ensure the ssh-agent is running
+		$ eval $(ssh-agent -s)
+		>Agent pid 1229
+Step6: Add your SSH private key to the ssh-agent. 
+	   >ssh-add ~/.ssh/id_rsa
+		Enter passphrase for /c/Users/harit/.ssh/id_rsa:1234
+		Identity added: /c/Users/harit/.ssh/id_rsa (<haritha.sarwa@outlook.com>)
+Step7: Copy the SSH key to your clipboard.
+	   >clip < ~/.ssh/id_rsa.pub
+	   MySshkey
+		04:da:a4:f3:78:d2:cd:38:6d:08:c8:35:2e:d1:85:4b
+		Added on Mar 8, 2020
+		Never used — Read/write
+
+1.c. Logging at local Git to connect with remote GitHub
+		 git config --global user.email "haritha.sarwa@outlook.com"
+		 git config --global user.username "HarithaSarwa"
+
+1.e. Creating a repository in your GitHub account
+		Go to the homepage of GitHub.com and click on New Repository 
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+CRUD Operations on Git
+DESCRIPTION
+
+This section will guide you to: 
+
+Revert the earlier commits 
+
+Ignore files in Git
+
+Pull the commits and collaborate between the repositories
+
+This guide has three subsections, namely:
+
+2.a. Reverting the previous commits
+
+	You can get the hash by running git log
+	You can run git log - -online to simplify the output
+	You can revert the previous commits by running git revert <commit hash>
+	You can fix the detached head by running git checkout <current branch>
+
+
+2.b. Ignoring specific files from the .git directory
+
+	You can get the hash by running git log
+	You can run git log - -online to simplify the output
+	You can revert the previous commits by running git revert <commit hash>
+	You can fix the detached head by running git checkout <current branch>
+
+
+2.c. Pulling the commits and collaborating between the local and remote repositories 
+
+	The git pull command first runs git fetch which downloads content from the specified remote repository
+	The git merge is executed to merge the remote content references and heads into a new local merge commit
+	You can execute git pull <options> to fetch the specified remote’s copy of the current branch and immediately merge it into local copy
+	You can execute git pull --no-commit <remote> that fetches the remote content but doesn’t create a new merge commit
+	You can execute git pull --verbose to fetch the verbose output during a pull
+	You can execute git pull --rebase <remote> instead of git merge
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
